@@ -1,6 +1,18 @@
 <?php
 
+/*
+ * MysqlMonitor [A journey always starts with the first step]
+ *
+ * @copyright Copyright (C) 2013 wine.cn All rights reserved.
+ * @license http://www.apache.org/licenses/LICENSE-2.0.txt
+ */
 
+
+/**
+ * 实例化执行主类,传入MySQL配置文件
+ *
+ * @author <dreamans@163.com>
+ */
 new Monitor(array(
     'host' => 'localhost',
     'port' => 3306,
@@ -8,10 +20,25 @@ new Monitor(array(
     'pass' => 'root',
 ));
 
+/**
+ * 核心类,负责控制打印输出MySQL相关信息
+ *
+ * @author <dreamans@163.com>
+ */
 class Monitor {
 
+    /**
+     * 模型对象
+     *
+     * @var object
+     */
     var $model;
 
+    /**
+     * 页面刷新时间,默认5秒
+     *
+     * @var int
+     */
     var $refresh = 5;
 
     public function __construct($config) {
@@ -20,7 +47,7 @@ class Monitor {
 
     private function header() {
         header("Content-Type:text/html; charset=utf-8");
-        header("X-Powered-By:PHP");
+        header("X-Powered-By:MysqlMonitor");
     }
 
     private function init($config) {
